@@ -1,0 +1,7 @@
+.style-navbar {
+    @apply h-20 bg-base-100 flex justify-center items-center py-5 px-10 lg:px-20
+}
+
+.content {
+    min-height: calc(100vh - 5rem);
+}
