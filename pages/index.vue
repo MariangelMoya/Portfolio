@@ -1,5 +1,5 @@
 <template>
-  <div class="content items-center justify-center flex px-10 lg:px-20">
+  <div class="content bg-red-800 items-center justify-center flex px-10 lg:px-20">
     <div class="flex justify-center flex-col items-center">
       <h2 class="text-2xl text-center">Hello, I'm</h2>
       <h1 class="font-bold text-5xl text-primary py-2 text-center">Mariangel Moya</h1>
