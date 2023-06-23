@@ -1,7 +1,33 @@
 .style-navbar {
-    @apply h-20 bg-base-100 flex justify-center items-center py-5 px-10 lg:px-20
+    @apply h-20 bg-primary  flex justify-center items-center py-5 px-10 lg:px-20 sticky top-0 z-10
 }
 
 .content {
     min-height: calc(100vh - 5rem);
+}
+
+.bubble {
+    @apply absolute w-48 h-48 rounded-full;
+    box-shadow: inset 0 0 25px hsl(var(--bc));
+}
+
+.bubble span {
+    @apply absolute  rounded-full
+}
+
+.bubble span:nth-child(1) {
+    inset: 8px;
+    border-left: 10px solid hsl(var(--p));
+    filter: blur(10px);
+}
+.bubble span:nth-child(2) {
+    inset: 30px;
+    border-left: 8px solid hsl(var(--s));
+    filter: blur(15px);
+}
+.bubble span:nth-child(3) {
+    inset: 10px;
+    border-bottom: 10px solid hsl(var(--nc));
+    filter: blur(8px);
+    transform: rotate(330deg);
 }

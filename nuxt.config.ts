@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
     css: ['~/assets/css/main.css'],
     colorMode: {
-        preference: 'dark', // default theme
+        preference: 'system', // default theme
         dataValue: 'theme', // activate data-theme in <html> tag
         classSuffix: '',
     },
