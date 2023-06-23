@@ -25,46 +25,17 @@
             and seek to enter the workforce in the world of web development.</p>
         </div>
         <div class="flex flex-col">
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/HTML5_logo.svg.png" class="w-10"/>
-            <p>junior</p>
-          </div>
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/css_logo.svg.png" class="w-10"/>
-            <p>junior</p>
-          </div>
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/Js-Logo.png" class="w-10"/>
-            <p>junior</p>
-          </div>
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/TypeScript-logo.png" class="w-10"/>
-            <p>junior</p>
-          </div>
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/Vue.js_Logo_2.svg_bg_transparent.png" class="w-10"/>
-            <p>junior</p>
-          </div>
-          <div class="flex gap-10 mb-3">
-            <img alt="css-logo" src="/Tailwind_CSS_Logo.svg.png" class="w-10"/>
-            <p>junior</p>
+          <div class="grid grid-rows-2 grid-flow-col gap-4">
+            <Bubble title="HTML" src="/html.png"></Bubble>
+            <Bubble title="CSS" src="/css.png"></Bubble>
+            <Bubble title="JS" src="/js.png"></Bubble>
+            <Bubble title="TailwindCSS" src="/tcss.png"></Bubble>
+            <Bubble title="VUE" src="/vue.png"></Bubble>
+            <Bubble title="TypeScript" src="/ts.png"></Bubble>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="flex justify-center items-center min-h-screen bg-base-100">
-      <div class="flex items-center flex-col">
-        <a>HTML</a>
-        <img class="w-20" alt="html" src="/HTML5_logo.svg.png"/>
-      </div>
-      <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
 
   </Teleport>
 </template>
