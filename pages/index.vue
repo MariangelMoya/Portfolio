@@ -34,14 +34,37 @@
         <button class="button-section-projects ">Developments</button>
       </div>
     </div>
-    <div class="mockup-phone">
-      <div class="camera"></div>
-      <div class="display">
-        <div class="artboard artboard-demo phone-1">
+    <div class="flex gap-8 my-12">
+      <div class="mockup-phone h-[500px]">
+        <div class="camera"></div>
+        <div class="display">
+          <div class="artboard artboard-demo phone-1">
+            <img src="/Home-cut.png" alt="home">
+          </div>
+        </div>
+      </div>
+      <div class="mockup-window border border-base-300 w-[470px] h-[500px]">
+        <div class="flex justify-center px-4 py-16 border-t border-base-300">
           <img src="/Home-cut.png" alt="home">
         </div>
       </div>
+      <div class="mockup-window border border-base-300 w-[470px] h-[500px]">
+        <div class="flex justify-center px-4 py-16 border-t border-base-300">
+          <img src="/travel_bootsrapStudio-cut.png" alt="home">
+        </div>
+      </div>
     </div>
+  </div>
+  <div id="contact" class="flex flex-col items-center justify-center">
+    <h2 class="text-base-content text-3xl font-bold mt-20">CONTACT</h2>
+    <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
+    <h3 class="my-10">Send me a message if you want to be in contact with me</h3>
+    <input type="text" placeholder="Name" class="mb-2 bg-primary-content px-5 py-2 w-96"/>
+    <input type="text" placeholder="Email" class="mb-2 bg-primary-content px-5 py-2 w-96"/>
+    <textarea class="mb-2 bg-primary-content px-5 py-2 w-96">Message</textarea>
+  </div>
+  <div>
+
   </div>
 </template>
 <script setup lang="ts">
