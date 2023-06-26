@@ -69,5 +69,9 @@
 }
 
 .button-section-projects {
-    @apply btn bg-transparent border-0 btn-primary my-10 text-base-content hover:bg-primary hover:text-primary-content
+    @apply btn bg-transparent border-0 btn-primary text-base-content hover:bg-primary hover:text-primary-content
 }
+
+.input-place-holder {
+    @apply mb-2 bg-base-300 placeholder:text-base-content px-5 py-2 w-full focus:ring-primary focus:border-primary rounded
+ }

@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div id="projects" class="flex flex-col items-center justify-center">
+  <div id="projects" class="flex flex-col items-center justify-center bg-base-200">
     <h2 class="text-base-content text-3xl font-bold mt-20">PROJECTS</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
     <div class="grid container mx-auto">
@@ -35,36 +35,37 @@
       </div>
     </div>
     <div class="flex gap-8 my-12">
-      <div class="mockup-phone h-[500px]">
-        <div class="camera"></div>
-        <div class="display">
-          <div class="artboard artboard-demo phone-1">
-            <img src="/Home-cut.png" alt="home">
-          </div>
-        </div>
-      </div>
-      <div class="mockup-window border border-base-300 w-[470px] h-[500px]">
-        <div class="flex justify-center px-4 py-16 border-t border-base-300">
+      <!--      <div class="mockup-phone">-->
+      <!--        <div class="camera"></div>-->
+      <!--        <div class="display overflow-hidden">-->
+      <!--          <div class="artboard artboard-demo phone-1 justify-start !w-[300px]">-->
+      <!--            <img src="/Home.png" class="w-full" alt="home">-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <div class="mockup-window border border-base-300 w-[450px] h-[340px]">
+        <div class="flex justify-center border-t border-base-300">
           <img src="/Home-cut.png" alt="home">
         </div>
       </div>
-      <div class="mockup-window border border-base-300 w-[470px] h-[500px]">
-        <div class="flex justify-center px-4 py-16 border-t border-base-300">
-          <img src="/travel_bootsrapStudio-cut.png" alt="home">
+      <div class="mockup-window border border-base-300 w-[450px] h-[340px]">
+        <div class="flex justify-center border-t border-base-300">
+          <img src="/travel_bootsrapStudio.png" alt="home">
+        </div>
+      </div>
+      <div class="mockup-window border border-base-300 w-[450px] h-[340px]">
+        <div class="flex justify-center border-t border-base-300">
+          <img src="/Home travel.png" alt="home">
         </div>
       </div>
     </div>
   </div>
-  <div id="contact" class="flex flex-col items-center justify-center">
-    <h2 class="text-base-content text-3xl font-bold mt-20">CONTACT</h2>
-    <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
-    <h3 class="my-10">Send me a message if you want to be in contact with me</h3>
-    <input type="text" placeholder="Name" class="mb-2 bg-primary-content px-5 py-2 w-96"/>
-    <input type="text" placeholder="Email" class="mb-2 bg-primary-content px-5 py-2 w-96"/>
-    <textarea class="mb-2 bg-primary-content px-5 py-2 w-96">Message</textarea>
-  </div>
   <div>
+    <Contact></Contact>
+  </div>
 
+  <div>
+    <Footer></Footer>
   </div>
 </template>
 <script setup lang="ts">
