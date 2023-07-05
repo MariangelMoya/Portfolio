@@ -2,9 +2,9 @@
   <nav class="style-navbar">
     <div class="flex gap-x-5 items-center">
       <div class="flex gap-x-5">
-        <nuxt-link to="#about-me" class="cursor-pointer hover:underline text-primary-content">ABOUT</nuxt-link>
-        <nuxt-link to="#projects" class="cursor-pointer hover:underline text-primary-content">PORTFOLIO</nuxt-link>
-        <nuxt-link to="#" class="cursor-pointer hover:underline text-primary-content">CONTACT</nuxt-link>
+        <nuxt-link to="/#about" class="cursor-pointer hover:underline text-primary-content">ABOUT</nuxt-link>
+        <nuxt-link to="/#portfolio" class="cursor-pointer hover:underline text-primary-content">PORTFOLIO</nuxt-link>
+        <nuxt-link to="/#contact" class="cursor-pointer hover:underline text-primary-content">CONTACT</nuxt-link>
       </div>
       <div class="dropdown dropdown-end dropdown-button">
         <label tabindex="0" class="btn btn-ghost text-primary-content m-1">

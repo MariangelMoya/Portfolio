@@ -1,3 +1,13 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 .style-navbar {
     @apply h-20 bg-primary  flex justify-center items-center py-5 px-10 lg:px-20 sticky top-0 z-10
 }

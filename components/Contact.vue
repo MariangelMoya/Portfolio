@@ -1,5 +1,5 @@
 <template>
-  <div id="contact" class="flex -z-10 flex-col items-center justify-center">
+  <div id="contact" class="flex -z-10 flex-col items-center pt-10 justify-center">
     <h2 class="text-base-content text-3xl font-bold mt-20">CONTACT</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
     <div
@@ -35,7 +35,7 @@
         </div>
       </div>
       <form class="grid col-span-2 grid-cols-2 gap-4">
-        <div class="col-span-full py-10 z-[0] relative">
+        <div class="col-span-full py-10 z-0 relative">
           <h2 class="text-base-content text-[25px] font-bold">Let's talk</h2>
           <h3 class="mb-0">Send me a message if you want to be in contact with me.</h3>
         </div>

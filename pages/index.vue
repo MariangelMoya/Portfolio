@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="flex flex-col items-center justify-center">
+  <div id="about" class="flex flex-col items-center justify-center pt-10">
     <h2 class="text-base-content text-3xl font-bold mt-20">ABOUT</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-20"/>
     <div class="grid container mx-auto grid-cols-2 px-20 gap-32 mb-16 items-center">
@@ -39,15 +39,7 @@
       </div>
     </div>
     <div class="flex gap-8 my-12">
-      <!--      <div class="mockup-phone">-->
-      <!--        <div class="camera"></div>-->
-      <!--        <div class="display overflow-hidden">-->
-      <!--          <div class="artboard artboard-demo phone-1 justify-start !w-[300px]">-->
-      <!--            <img src="/Home.png" class="w-full" alt="home">-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-      <PortfolioCard v-for="project in data" :data="project">
+      <PortfolioCard @open-modal="showState = true" v-if="!pending" v-for="project in data" :data="project">
       </PortfolioCard>
     </div>
 
@@ -59,6 +51,8 @@
   <Contact />
 
   <Footer />
+  <ImagesModal :show="showState" @close="showState = false" v-if="!pending" :images="data.map(e => e.image)"></ImagesModal>
+
 </template>
 <script setup lang="ts">
 import Project from "~/types/Project";
@@ -71,5 +65,9 @@ definePageMeta({
 //   method: 'POST' as any    le pongo el metodo que me interesa
 // })
 
-const { data } = await useFetch<Project[]>('http://127.0.0.1:8000/api/projects')
+const { data, pending } = await useFetch<Project[]>('http://127.0.0.1:8000/api/projects', {
+  server: false
+})
+
+let showState = ref(false)
 </script>

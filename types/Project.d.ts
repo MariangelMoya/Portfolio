@@ -1,6 +1,7 @@
 export default interface Project {
     id: number,
     image: string,
+    image_thumb: string,
     title: string,
     description: string,
     type: 'Website' | 'UI & UX',
