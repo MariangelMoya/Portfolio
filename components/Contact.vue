@@ -3,11 +3,11 @@
     <h2 class="text-base-content text-3xl font-bold mt-20">CONTACT</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
     <div
-        class="grid grid-cols-3 relative gap-4 mt-8 items-start border-2 border-base-300 p-8 box-border w-[70%] rounded bg-base-200">
-      <div class="h-44 w-full absolute top-0 right-0 left-0 bg-base-100/50" />
+        class="grid xl:grid-cols-3 relative gap-4 mt-8 items-start border-2 border-base-300 p-8 box-border w-11/12 sm:w-9/12 rounded bg-base-200">
+      <div class="h-44 w-full absolute z-0 top-0 right-0 left-0 bg-base-100/50"/>
       <div>
-        <img alt="Mariangel Moya" class="z-10 relative" src="/Mariangel-without-bg.png"/>
-        <div>
+        <img alt="Mariangel Moya" class="mx-auto relative z-0" src="/Mariangel-without-bg.png"/>
+        <div class="hidden xs:block">
           <h2 class="text-center">WRITE AN E-MAIL</h2>
           <h2 class="font-bold text-center">moya.mariangel.jose@gmail.com</h2>
         </div>
@@ -34,40 +34,67 @@
           </div>
         </div>
       </div>
-      <form class="grid col-span-2 grid-cols-2 gap-4">
+      <form @submit.prevent="sendMessage" class="grid xl:col-span-2 xl:grid-cols-2 gap-4">
         <div class="col-span-full py-10 z-0 relative">
-          <h2 class="text-base-content text-[25px] font-bold">Let's talk</h2>
-          <h3 class="mb-0">Send me a message if you want to be in contact with me.</h3>
+          <h2 class="text-base-content xs:text-[25px] font-bold">Let's talk</h2>
+          <h3 class="mb-0 xs:text-xl">Send me a message if you want to be in contact with me.</h3>
         </div>
         <div class="form-control w-full">
           <label class="label">
-            <span class="label-text">FIRST NAME</span>
+            <span class="label-text text-xs xs:text-sm">FIRST NAME</span>
           </label>
-          <input type="text" placeholder="Name" class="input-place-holder"/>
+          <input type="text" v-model="contact.name" placeholder="Name" class="input-place-holder "/>
+          <span v-for="error in contact.errors.name" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full">
           <label class="label">
-            <span class="label-text">YOUR EMAIL</span>
+            <span class="label-text text-xs xs:text-sm">YOUR EMAIL</span>
           </label>
-          <input type="text" placeholder="Email" class="input-place-holder"/>
+          <input type="text" v-model="contact.email" placeholder="Email" class="input-place-holder"/>
+          <span v-for="error in contact.errors.email" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full col-span-full">
           <label class="label">
-            <span class="label-text">SUBJECT</span>
+            <span class="label-text text-xs xs:text-sm">SUBJECT</span>
           </label>
-          <input type="text" placeholder="Subject" class="input-place-holder"/>
+          <input type="text" v-model="contact.subject" placeholder="Subject" class="input-place-holder"/>
+          <span v-for="error in contact.errors.subject" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full col-span-full">
           <label class="label">
-            <span class="label-text">YOUR MESSAGE</span>
+            <span class="label-text text-xs xs:text-sm">YOUR MESSAGE</span>
           </label>
-          <textarea placeholder="Your Message" class="input-place-holder"></textarea>
+          <textarea placeholder="Your Message" v-model="contact.message" class="input-place-holder"></textarea>
+          <span v-for="error in contact.errors.message" class="text-error">{{ error }}</span>
         </div>
-        <button class="w-full col-span-full btn btn-primary">SEND MESSAGE</button>
+        <button type="submit" class="w-full col-span-full btn btn-primary text-xs xs:text-sm">SEND MESSAGE</button>
       </form>
     </div>
 
   </div>
 </template>
 <script setup lang="ts">
+
+import useForm from "~/composables/useForm";
+import axios, {AxiosError} from "axios";
+
+let contact = useForm({
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+})
+
+let sendMessage = () => {
+  axios.post('http://127.0.0.1:8000/api/contact', contact)
+      .then(()=> {
+        contact.reset()
+      })
+      .catch((error: AxiosError<{errors: any}>) => {
+        if (error.response?.status == 422) {
+          contact.errors = error.response?.data?.errors
+        }
+      })
+
+}
 </script>

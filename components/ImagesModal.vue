@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800/50">
     <span class="absolute inset-0 cursor-pointer" @click.stop="$emit('close')"/>
-    <div class="w-[500px]">
+    <div class="w-10/12 sm:w-[500px]">
       <swiper
           :effect="'cards'"
           :grabCursor="true"

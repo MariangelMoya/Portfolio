@@ -2,19 +2,20 @@
   <div id="about" class="flex flex-col items-center justify-center pt-10">
     <h2 class="text-base-content text-3xl font-bold mt-20">ABOUT</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-20"/>
-    <div class="grid container mx-auto grid-cols-2 px-20 gap-32 mb-16 items-center">
+    <div class="grid container mx-auto grid-cols-1 lg:grid-cols-2 px-5 xl:px-20 gap-32 mb-16 items-center">
       <div class="flex flex-col items-center">
-        <div class="rounded-full bg-primary w-80 h-80 overflow-hidden me-shadow">
-          <img class="w-80 h-80 scale-[1.12] pr-5" alt="picture of me :)" src="/mariangel-circle.png">
+        <div class="rounded-full bg-primary w-60 h-60 xs:w-80 xs:h-80 overflow-hidden me-shadow">
+          <img class="w-60 h-60 scale-[1.13] pr-4 xs:w-80 xs:h-80 xs:scale-[1.12] xs:pr-5" alt="picture of me :)" src="/mariangel-circle.png">
         </div>
-        <p class="mt-8 text-center max-w-[440px]">Hi, mi name is <b>Mariangel Moya</b>.<br/>
+        <p class="mt-8 text-center max-w-[440px]">Hi, my name is <b>Mariangel Moya</b>.<br/>
           i’m a trainee developer.
           I'm very interested in the front end.<br/>
           Currently, I study and train on my own
-          and seek to enter the workforce in the world of web development.</p>
+          and I want to help make ideas and projects come true.</p>
       </div>
       <div class="flex flex-col">
-        <div class="grid grid-rows-2 grid-flow-col gap-4">
+        <h2 class="text-center text-2xl mb-10 font-bold">My Skills</h2>
+        <div class="grid grid-cols-2 justify-items-center xl:grid-cols-3 gap-4">
           <Bubble title="HTML" src="/html.png"></Bubble>
           <Bubble title="CSS" src="/css.png"></Bubble>
           <Bubble title="JS" src="/js.png"></Bubble>
@@ -27,7 +28,7 @@
   </div>
 
   <div id="portfolio" class="flex flex-col items-center justify-center bg-base-200 pt-10 mb-10 relative">
-    <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="text-base-100 absolute top-0 left-0">
+    <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" xmlns="http://www.w3.org/2000/svg" class="text-base-100 absolute top-0 left-0">
       <path d="M0 0 L50 100 L100 0 Z" fill="currentColor" stroke="currentColor"></path>
     </svg>
     <h2 class="text-base-content text-3xl font-bold mt-20">PORTFOLIO</h2>
@@ -36,14 +37,13 @@
       <div class="flex justify-center items-center">
         <button class="button-section-projects ">UI & UX</button>
         <button class="button-section-projects ">Developments</button>
+        <button class="button-section-projects ">All</button>
       </div>
     </div>
-    <div class="flex gap-8 my-12">
-      <PortfolioCard @open-modal="showState = true" v-if="!pending" v-for="project in data" :data="project">
-      </PortfolioCard>
-    </div>
 
-    <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="text-base-200 absolute top-full left-0">
+    <PortfolioSlider @openModal="showState = true" v-if="projects" :carts="projects"/>
+
+    <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" xmlns="http://www.w3.org/2000/svg" class="text-base-200 absolute top-full left-0">
       <path d="M0 0 L50 100 L100 0 Z" fill="currentColor" stroke="currentColor"></path>
     </svg>
   </div>
@@ -51,14 +51,32 @@
   <Contact />
 
   <Footer />
-  <ImagesModal :show="showState" @close="showState = false" v-if="!pending" :images="data.map(e => e.image)"></ImagesModal>
+  <ImagesModal :show="showState" @close="showState = false" v-if="!pending" :images="projects?.map(e => e.image)"></ImagesModal>
 
 </template>
 <script setup lang="ts">
 import Project from "~/types/Project";
+import {Ref} from "vue";
 
 definePageMeta({
   layout: 'home',
+})
+
+useHead({
+  title: 'Mariangel Moya - Portfolio',
+})
+
+useSeoMeta({
+  author: 'Mariangel Moya',
+  description: 'description',
+  ogType: 'website',
+  ogUrl: '',
+  title: 'Mariangel Moya - Portfolio',
+  ogTitle: 'Mariangel Moya - Portfolio',
+  ogSiteName: 'Mariangel Moya - Portfolio',
+  ogDescription: 'Portfolio website by Mariangel Moya. \nYou can see a brief description of me, my skills, projects and contact me.',
+  ogImage: 'Mariangel.ico',
+  ogImageAlt: 'Mariangel Moya Icon'
 })
 
 // const e = await useFetch('/api', {
@@ -68,6 +86,8 @@ definePageMeta({
 const { data, pending } = await useFetch<Project[]>('http://127.0.0.1:8000/api/projects', {
   server: false
 })
+
+const projects = data as Ref<Project[]|null>
 
 let showState = ref(false)
 </script>

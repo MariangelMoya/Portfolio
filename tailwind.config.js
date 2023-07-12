@@ -3,7 +3,10 @@ module.exports = {
         extend: {
             zIndex: {
                 '0': '0',
-            }
+            },
+            screens: {
+                'xs': '450px',
+            },
         }
     },
     plugins: [require('daisyui'), require('@tailwindcss/forms'),],

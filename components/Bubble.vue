@@ -1,9 +1,9 @@
 <template>
-  <div class="relative animation-upper-down w-40 h-40 flex justify-center items-center">
+  <div class="relative animation-upper-down w-20 h-20 xs:w-40 xs:h-40 flex justify-center items-center">
     <div class="flex justify-center items-center bg-base-100">
       <div class="flex items-center flex-col">
-        <a>{{ title }}</a>
-        <img class="w-20" :alt="title" :src="src"/>
+        <a class="hidden xs:block">{{ title }}</a>
+        <img class="w-10 xs:w-20" :alt="title" :src="src"/>
       </div>
       <div class="bubble">
         <span></span>

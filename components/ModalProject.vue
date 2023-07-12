@@ -2,19 +2,24 @@
   <dialog :id="'modal_' + data.id" class="modal">
     <form method="dialog" class="modal-box w-11/12 max-w-full relative">
       <div class="flex justify-center flex-col items-center">
-        <h1 class="font-bold text-2xl my-4">Detailed Project 1</h1>
+        <h1 class="text-3xl my-4 uppercase font-bold">{{ data.title }}</h1>
         <div class="grid grid-cols-3 gap-8 p-8">
           <div class="max-h-[65vh] overflow-auto col-span-2">
             <img  alt="project-image" :src="data.image"/>
           </div>
           <div class="col-span-1">
-            <h2 class="my-4"><b>Title: </b>{{ data.title }}</h2>
             <div class="my-4">
-              <h2 class="font-bold">Description:</h2>
-              <P>Quidam lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure. Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.</P>
+              <h2 class="font-bold text-2xl mb-2">Description:</h2>
+              <p class="text-xl">{{ data.description }}</p>
             </div>
-            <P>Type: loodksk</P>
-            <P>lenguages: loodksk</P>
+            <div class="my-4">
+              <h2 class="font-bold text-2xl mb-2">Type:</h2>
+              <p class="text-xl">{{ data.type }}</p>
+            </div>
+            <div v-show="data.languages.length > 0" class="my-4">
+              <h2 class="font-bold text-2xl mb-2">Languages:</h2>
+              <p class="text-xl">{{ data.languages }}</p>
+            </div>
           </div>
         </div>
       </div>
