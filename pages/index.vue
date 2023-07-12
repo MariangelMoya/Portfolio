@@ -8,10 +8,9 @@
           <img class="w-60 h-60 scale-[1.13] pr-4 xs:w-80 xs:h-80 xs:scale-[1.12] xs:pr-5" alt="picture of me :)" src="/mariangel-circle.png">
         </div>
         <p class="mt-8 text-center max-w-[440px]">Hi, my name is <b>Mariangel Moya</b>.<br/>
-          i’m a trainee developer.
-          I'm very interested in the front end.<br/>
-          Currently, I study and train on my own
-          and I want to help make ideas and projects come true.</p>
+          I'm a front-end web developer with a passion for creating beautiful and engaging user experiences.<br/>
+          I'm currently available for freelance opportunities and excited to collaborate with innovative clients like you.<br/>
+          Based in Italy, I offer my services to clients worldwide.</p>
       </div>
       <div class="flex flex-col">
         <h2 class="text-center text-2xl mb-10 font-bold">My Skills</h2>
@@ -22,6 +21,8 @@
           <Bubble title="TailwindCSS" src="/tcss.png"></Bubble>
           <Bubble title="VUE" src="/vue.png"></Bubble>
           <Bubble title="TypeScript" src="/ts.png"></Bubble>
+          <Bubble size="w-1/3" title="Figma" src="/figma.png"></Bubble>
+          <Bubble title="Nuxt" src="/nuxt.png"></Bubble>
         </div>
       </div>
     </div>
@@ -35,13 +36,13 @@
     <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
     <div class="grid container mx-auto">
       <div class="flex justify-center items-center">
-        <button class="button-section-projects ">UI & UX</button>
-        <button class="button-section-projects ">Developments</button>
-        <button class="button-section-projects ">All</button>
+        <button :class="type === 'UI & UX' ? 'active' : ''" @click="changeType('UI & UX')" class="button-section-projects">UI & UX</button>
+        <button :class="type === 'Development' ? 'active' : ''" @click="changeType('Development')" class="button-section-projects">Developments</button>
+        <button :class="type === null ? 'active' : ''" @click="changeType(null)" class="button-section-projects">All</button>
       </div>
     </div>
 
-    <PortfolioSlider @openModal="showState = true" v-if="projects" :carts="projects"/>
+    <PortfolioSlider @openModal="showState = true" v-if="projects" :carts="projects.data"/>
 
     <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="75" width="100%" xmlns="http://www.w3.org/2000/svg" class="text-base-200 absolute top-full left-0">
       <path d="M0 0 L50 100 L100 0 Z" fill="currentColor" stroke="currentColor"></path>
@@ -51,12 +52,13 @@
   <Contact />
 
   <Footer />
-  <ImagesModal :show="showState" @close="showState = false" v-if="!pending" :images="projects?.map(e => e.image)"></ImagesModal>
+  <ImagesModal :show="showState" @close="showState = false" v-if="!pending" :images="projects?.data.map(e => e.image)"></ImagesModal>
 
 </template>
 <script setup lang="ts">
 import Project from "~/types/Project";
-import {Ref} from "vue";
+import {computed, Ref} from "vue";
+import Paginate from "~/types/Paginate";
 
 definePageMeta({
   layout: 'home',
@@ -82,12 +84,27 @@ useSeoMeta({
 // const e = await useFetch('/api', {
 //   method: 'POST' as any    le pongo el metodo que me interesa
 // })
+type Types = 'UI & UX' | 'Development' | null
 
-const { data, pending } = await useFetch<Project[]>('http://127.0.0.1:8000/api/projects', {
-  server: false
+const type = ref<Types>(null)
+
+const changeType = (value: Types) => {
+  type.value = value
+}
+
+const url = computed(() => {
+  let query = ''
+  if (type.value) {
+    query = '?filter[type]=' + type.value
+  }
+  return 'http://127.0.0.1:8000/api/projects' + query
 })
 
-const projects = data as Ref<Project[]|null>
+const { data, pending } = await useFetch<Paginate<Project>>(url, {
+  server: false,
+})
+
+const projects = data as Ref<Paginate<Project>|null>
 
 let showState = ref(false)
 </script>

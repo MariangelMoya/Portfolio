@@ -3,13 +3,14 @@
     <swiper
         :grabCursor="true"
         auto-height
+        slides-per-view="1"
         :centered-slides="true"
         :breakpoints="breakpoints"
         :navigation="true"
         :modules="modules"
         class=""
     >
-      <swiper-slide class="!w-fit !flex justify-center !overflow-auto py-8" v-for="cart in carts">
+      <swiper-slide class="md:!w-fit !flex justify-center !overflow-auto py-8" v-for="cart in carts">
         <PortfolioCard @open-modal="$emit('openModal')" :data="cart">
         </PortfolioCard>
       </swiper-slide>

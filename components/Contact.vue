@@ -37,7 +37,8 @@
       <form @submit.prevent="sendMessage" class="grid xl:col-span-2 xl:grid-cols-2 gap-4">
         <div class="col-span-full py-10 z-0 relative">
           <h2 class="text-base-content xs:text-[25px] font-bold">Let's talk</h2>
-          <h3 class="mb-0 xs:text-xl">Send me a message if you want to be in contact with me.</h3>
+          <h3 class="mb-0 xs:text-xl">Let's connect, no matter where you're located!</h3>
+          <h3 class="mb-0 xs:text-xl">I speak Spanish, Italian and English.</h3>
         </div>
         <div class="form-control w-full">
           <label class="label">

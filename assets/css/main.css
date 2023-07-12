@@ -79,7 +79,10 @@ html {
 }
 
 .button-section-projects {
-    @apply mx-1 btn h-8 min-h-6 p-2 bg-transparent border-0 btn-primary text-base-content hover:bg-primary hover:text-primary-content
+    @apply mx-1 btn h-8 min-h-6 p-2 bg-transparent border-0 btn-primary text-base-content hover:bg-primary hover:text-primary-content rounded
+}
+.button-section-projects.active {
+    @apply bg-primary text-primary-content rounded
 }
 
 .input-place-holder {
