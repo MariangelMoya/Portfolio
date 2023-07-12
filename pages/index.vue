@@ -80,7 +80,7 @@ useSeoMeta({
   ogImage: 'Mariangel.ico',
   ogImageAlt: 'Mariangel Moya Icon'
 })
-
+const runtimeConfig = useRuntimeConfig()
 // const e = await useFetch('/api', {
 //   method: 'POST' as any    le pongo el metodo que me interesa
 // })
@@ -97,7 +97,7 @@ const url = computed(() => {
   if (type.value) {
     query = '?filter[type]=' + type.value
   }
-  return 'http://127.0.0.1:8000/api/projects' + query
+  return runtimeConfig.public.api + '/projects' + query
 })
 
 const { data, pending } = await useFetch<Paginate<Project>>(url, {
