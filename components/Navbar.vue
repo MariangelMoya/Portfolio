@@ -30,22 +30,33 @@
           <a href="/#portfolio" class="cursor-pointer hover:underline text-primary-content">PORTFOLIO</a>
           <a href="/#contact" class="cursor-pointer hover:underline text-primary-content">CONTACT</a>
         </div>
+      </div>
 
+        <div class="justify-self-end">
+        <div class="dropdown dropdown-end dropdown-button">
+          <label tabindex="0" class="btn btn-ghost normal-case tooltip before:bg-base-300 after:border-b-base-300 before:text-base-content tooltip-bottom inline-flex text-primary-content px-2 m-1 min-h-0 h-8" data-tip="Themes">
+            <swatch-icon class="w-6"></swatch-icon>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li v-for="theme of themes" :key="theme" @click="colorMode.preference = theme"><a class="capitalize">{{ theme }}</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown dropdown-end dropdown-button">
+          <label tabindex="0" class="btn btn-ghost normal-case tooltip before:bg-base-300 after:border-b-base-300 before:text-base-content tooltip-bottom inline-flex text-primary-content px-2 m-1 min-h-0 h-8" data-tip="Languages">
+            <LanguageIcon class="w-6"></LanguageIcon>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li v-for="theme of themes" :key="theme" @click="colorMode.preference = theme"><a class="capitalize">{{ theme }}</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="dropdown dropdown-end dropdown-button justify-self-end">
-        <label tabindex="0" class="btn btn-ghost text-primary-content px-2 m-1 min-h-0 h-8">
-          <span class="text-primary-content text-sm lg:text-lg normal-case font-normal">Themes</span>
-          <swatch-icon class="w-6"></swatch-icon>
-        </label>
-        <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li v-for="theme of themes" :key="theme" @click="colorMode.preference = theme"><a class="capitalize">{{ theme }}</a></li>
-        </ul>
       </div>
-    </div>
+
   </nav>
 </template>
 <script setup lang="ts">
-import {SwatchIcon} from '@heroicons/vue/24/outline'
+import {SwatchIcon, LanguageIcon} from '@heroicons/vue/24/outline'
 
 const colorMode = useColorMode();
 const themes = [
