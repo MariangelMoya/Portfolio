@@ -78,7 +78,7 @@ useSeoMeta({
   ogTitle: 'Mariangel Moya - Portfolio',
   ogSiteName: 'Mariangel Moya - Portfolio',
   ogDescription: 'Portfolio website by Mariangel Moya. \nYou can see a brief description of me, my skills, projects and contact me.',
-  ogImage: 'Mariangel.ico',
+  ogImage: 'favicon.ico',
   ogImageAlt: 'Mariangel Moya Icon'
 })
 
