@@ -1,24 +1,24 @@
 <template>
   <dialog :id="'modal_' + data.id" class="modal">
-    <form method="dialog" class="modal-box w-11/12 max-w-full relative">
+    <form method="dialog" class="modal-box p-4 sm:w-11/12 max-w-full relative">
       <div class="flex justify-center flex-col items-center">
-        <h1 class="text-3xl my-4 uppercase font-bold">{{ data.title }}</h1>
-        <div class="grid grid-cols-3 gap-8 p-8">
+        <h1 class="text-xl xs:text-2xl sm:text-3xl my-4 uppercase font-bold">{{ data.title }}</h1>
+        <div class="xl:grid grid-cols-3 gap-8 sm:p-8">
           <div class="max-h-[65vh] overflow-auto col-span-2">
             <img  alt="project-image" :src="data.image"/>
           </div>
           <div class="col-span-1">
             <div class="my-4">
-              <h2 class="font-bold text-2xl mb-2">Description:</h2>
-              <p class="text-xl">{{ data.description }}</p>
+              <h2 class="font-bold sm:text-2xl mb-2">Description:</h2>
+              <p class="sm:text-xl">{{ data.description }}</p>
             </div>
             <div class="my-4">
-              <h2 class="font-bold text-2xl mb-2">Type:</h2>
-              <p class="text-xl">{{ data.type }}</p>
+              <h2 class="font-bold sm:text-2xl mb-2">Type:</h2>
+              <p class="sm:text-xl">{{ data.type }}</p>
             </div>
             <div v-show="data.languages.length > 0" class="my-4">
-              <h2 class="font-bold text-2xl mb-2">Languages:</h2>
-              <p class="text-xl">{{ data.languages }}</p>
+              <h2 class="font-bold sm:text-2xl mb-2">Languages:</h2>
+              <p class="sm:text-xl">{{ data.languages }}</p>
             </div>
           </div>
         </div>

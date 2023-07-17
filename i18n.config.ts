@@ -6,6 +6,7 @@ export default defineI18nConfig(() => ({
         cookieKey: 'i18n_redirected',
         redirectOn: 'root',  // recommended
     },
+
     locales: [
         {
             code: 'en',

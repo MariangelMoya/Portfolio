@@ -1,6 +1,6 @@
 <template>
   <div id="contact" class="flex -z-10 flex-col items-center pt-10 justify-center">
-    <h2 class="text-base-content text-3xl font-bold mt-20">CONTACT</h2>
+    <h2 class="text-base-content text-3xl font-bold mt-20 uppercase">{{ $t('contact') }}</h2>
     <hr class="bg-base-content h-[4px] w-[70px] mb-5"/>
     <div
         class="grid xl:grid-cols-3 relative gap-4 mt-8 items-start border-2 border-base-300 p-8 box-border w-11/12 sm:w-9/12 rounded bg-base-200">
@@ -8,13 +8,13 @@
       <div>
         <img alt="Mariangel Moya" class="mx-auto relative z-0" src="/Mariangel-without-bg.png"/>
         <div class="hidden xs:block">
-          <h2 class="text-center">WRITE AN E-MAIL</h2>
+          <h2 class="text-center uppercase">{{ $t('write_me_an_e-mail') }}</h2>
           <h2 class="font-bold text-center">moya.mariangel.jose@gmail.com</h2>
         </div>
         <div>
           <div class="flex justify-center mt-5 gap-4">
             <div class="flex rounded-full w-8 h-8 bg-primary-content justify-center items-center">
-              <a class="hover:cursor-pointer">
+              <a href="https://github.com/MariangelMoya" class="hover:cursor-pointer">
                 <svg class="w-6 h-6 fill-primary" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 496 512">
                   <path
@@ -23,7 +23,7 @@
               </a>
             </div>
             <div class="flex rounded-full w-8 h-8 bg-primary-content justify-center items-center">
-              <a class="hover:cursor-pointer">
+              <a href="https://www.linkedin.com/in/mariangel-moya-a9103b273/" class="hover:cursor-pointer">
                 <svg class="w-5 h-5 fill-primary" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 448 512">
                   <path
@@ -36,39 +36,42 @@
       </div>
       <form @submit.prevent="sendMessage" class="grid xl:col-span-2 xl:grid-cols-2 gap-4">
         <div class="col-span-full py-10 z-0 relative">
-          <h2 class="text-base-content xs:text-[25px] font-bold">Let's talk</h2>
-          <h3 class="mb-0 xs:text-xl">Let's connect, no matter where you're located!</h3>
-          <h3 class="mb-0 xs:text-xl">I speak Spanish, Italian and English.</h3>
+          <h2 class="text-base-content xs:text-[25px] font-bold">{{ $t('let\'s_talk') }}</h2>
+          <h3 class="mb-0 xs:text-xl">{{ $t('Let\'s connect, no matter where you\'re located!') }}</h3>
+          <h3 class="mb-0 xs:text-xl">{{ $t('I speak Spanish, Italian and English') }}.</h3>
         </div>
         <div class="form-control w-full">
           <label class="label">
-            <span class="label-text text-xs xs:text-sm">FIRST NAME</span>
+            <span class="label-text text-xs xs:text-sm uppercase">{{ $t('first_name') }}</span>
           </label>
-          <input type="text" v-model="contact.name" placeholder="Name" class="input-place-holder "/>
+          <input type="text" v-model="contact.name" :placeholder="$t('Name')" class="input-place-holder "/>
           <span v-for="error in contact.errors.name" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full">
           <label class="label">
-            <span class="label-text text-xs xs:text-sm">YOUR EMAIL</span>
+            <span class="label-text text-xs xs:text-sm">{{ $t('YOUR EMAIL') }}</span>
           </label>
-          <input type="text" v-model="contact.email" placeholder="Email" class="input-place-holder"/>
+          <input type="text" v-model="contact.email" :placeholder="$t ('Email')" class="input-place-holder"/>
           <span v-for="error in contact.errors.email" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full col-span-full">
-          <label class="label">
-            <span class="label-text text-xs xs:text-sm">SUBJECT</span>
+          <label class="label uppercase">
+            <span class="label-text text-xs xs:text-sm">{{ $t('SUBJECT') }}</span>
           </label>
-          <input type="text" v-model="contact.subject" placeholder="Subject" class="input-place-holder"/>
+          <input type="text" v-model="contact.subject" :placeholder="$t ('SUBJECT')" class="input-place-holder"/>
           <span v-for="error in contact.errors.subject" class="text-error">{{ error }}</span>
         </div>
         <div class="form-control w-full col-span-full">
-          <label class="label">
-            <span class="label-text text-xs xs:text-sm">YOUR MESSAGE</span>
+          <label class="label uppercase">
+            <span class="label-text text-xs xs:text-sm">{{ $t('YOUR MESSAGE') }}</span>
           </label>
-          <textarea placeholder="Your Message" v-model="contact.message" class="input-place-holder"></textarea>
+          <textarea :placeholder="$t ('YOUR MESSAGE')" v-model="contact.message" class="input-place-holder placeholder:capitalize"></textarea>
           <span v-for="error in contact.errors.message" class="text-error">{{ error }}</span>
         </div>
-        <button type="submit" class="w-full col-span-full btn btn-primary text-xs xs:text-sm">SEND MESSAGE</button>
+        <button :disabled="pending" type="submit" class="w-full col-span-full btn btn-primary text-xs xs:text-sm">
+          {{ sent ? $t('Message sent') : $t('SEND MESSAGE') }}
+          <CheckCircleIcon class="w-6 fill-primary-content" v-show="sent"></CheckCircleIcon>
+        </button>
       </form>
     </div>
 
@@ -78,6 +81,7 @@
 
 import useForm from "~/composables/useForm";
 import axios, {AxiosError} from "axios";
+import {CheckCircleIcon} from "@heroicons/vue/24/solid";
 
 let contact = useForm({
   name: '',
@@ -86,15 +90,24 @@ let contact = useForm({
   message: '',
 })
 
+const pending = ref(false)
+const sent = ref(false)
+
 let sendMessage = () => {
+  pending.value = true
   axios.post('http://127.0.0.1:8000/api/contact', contact)
       .then(()=> {
         contact.reset()
+        sent.value = true
+        setTimeout(() => sent.value = false, 5000)
       })
       .catch((error: AxiosError<{errors: any}>) => {
         if (error.response?.status == 422) {
           contact.errors = error.response?.data?.errors
         }
+      })
+      .finally(() => {
+        pending.value = false
       })
 
 }

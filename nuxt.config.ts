@@ -10,7 +10,30 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n',],
     i18n: {
-        vueI18n: './i18n.config.ts',
+        legacy: false,
+        locale: 'en',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root',  // recommended
+        },
+        locales: [
+            {
+                code: 'en',
+                file: 'en.json'
+            },
+            {
+                code: 'es',
+                file: 'es.json'
+            },
+            {
+                code: 'it',
+                file: 'it.json'
+            }
+        ],
+        lazy: true,
+        langDir: 'lang',
+        defaultLocale: 'en',
     },
     colorMode: {
         preference: 'system', // default theme
