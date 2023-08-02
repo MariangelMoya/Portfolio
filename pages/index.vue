@@ -59,7 +59,7 @@
 import Project from "~/types/Project";
 import {computed, Ref} from "vue";
 import Paginate from "~/types/Paginate";
-import {useI18n} from "#imports";
+import {useI18n} from "vue-i18n";
 
 definePageMeta({
   layout: 'home',
