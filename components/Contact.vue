@@ -14,7 +14,7 @@
         <div>
           <div class="flex justify-center mt-5 gap-4">
             <div class="flex rounded-full w-8 h-8 bg-primary-content justify-center items-center">
-              <a href="https://github.com/MariangelMoya" class="hover:cursor-pointer">
+              <a target="_blank" href="https://github.com/MariangelMoya" class="hover:cursor-pointer">
                 <svg class="w-6 h-6 fill-primary" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 496 512">
                   <path
@@ -23,7 +23,7 @@
               </a>
             </div>
             <div class="flex rounded-full w-8 h-8 bg-primary-content justify-center items-center">
-              <a href="https://www.linkedin.com/in/mariangel-moya-a9103b273/" class="hover:cursor-pointer">
+              <a target="_blank" href="https://www.linkedin.com/in/mariangel-moya-a9103b273/" class="hover:cursor-pointer">
                 <svg class="w-5 h-5 fill-primary" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 448 512">
                   <path
