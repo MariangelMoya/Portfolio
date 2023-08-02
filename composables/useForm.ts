@@ -1,7 +1,7 @@
 import {reactive} from "vue";
 import type {UnwrapNestedRefs} from "@vue/reactivity";
 // @ts-ignore
-import {assign} from "lodash" //esto es la interfaz que regresa reactive
+import assign from "lodash/assign" //esto es la interfaz que regresa reactive
 
 
 //Record es una funcion para que una serie de elementos devuelvan lo mismo en un objeto,
