@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n',],
     i18n: {
+        // @ts-ignore
         legacy: false,
         locale: 'en',
         detectBrowserLanguage: {
