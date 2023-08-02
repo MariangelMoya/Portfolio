@@ -71,6 +71,7 @@
 </template>
 <script setup lang="ts">
 import {SwatchIcon, LanguageIcon} from '@heroicons/vue/24/outline'
+import {useSwitchLocalePath} from "vue-i18n-routing";
 
 const switchLocalePath = useSwitchLocalePath()
 const colorMode = useColorMode();
