@@ -36,6 +36,11 @@ export default defineNuxtConfig({
         langDir: 'lang',
         defaultLocale: 'en',
     },
+    nitro: {
+        prerender: {
+            crawlLinks: true,
+        },
+    },
     colorMode: {
         preference: 'system', // default theme
         dataValue: 'theme', // activate data-theme in <html> tag
